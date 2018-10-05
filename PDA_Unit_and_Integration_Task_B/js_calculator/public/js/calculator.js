@@ -33,9 +33,17 @@ Calculator.prototype = {
       this.runningTotal = '';
       this.newTotal = false;
     }
-    // concatenate the clicked number to the running total
-    this.runningTotal = parseFloat('' + this.runningTotal + number);
 
+    // added initial if condition here to cover division by zero
+    // else action as previous
+    if (number === '0' && this.previousOperator === '/') {
+      this.runningTotal = 'Not a number';
+    } else {
+
+      // concatenate the clicked number to the running total
+      this.runningTotal = parseFloat('' + this.runningTotal + number);
+
+    }
   },
 
   operatorClick: function(operator) {
